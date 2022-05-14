@@ -15,7 +15,8 @@
            $checkbox =$_POST['selstudent'];
            foreach ($checkbox as $deleteid)
            {
-               $sql = "DELETE FROM student WHERE studentid =". $deleteid;
+               $sid = $conn->real_escape_string($deleteid);
+               $sql = "DELETE FROM student WHERE studentid =". $sid;
                $result = mysqli_query($conn, $sql);
            }
        }

@@ -10,9 +10,9 @@ include "passwordLib.php";
  * @return boolean   - returns true or false depending on successful authentication of user.
  */
 function validatelogin($id,$password) {
-   global $conn;
+   $safeid = $conn->real_escape_string($id);
    // Build an SQL statment that will return a record with a matching id
-   $sql = "select * from student where studentid='$id';";
+   $sql = "select * from student where studentid='$safeid';";
 	//echo $sql;
    $loginresult = mysqli_query($conn, $sql);
    $studentdetails = mysqli_fetch_assoc($loginresult);
